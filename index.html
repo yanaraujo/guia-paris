@@ -1209,6 +1209,92 @@
             </div>
         </div>
 
+        <!-- Metro Map HD -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: #667eea;">🚇</div>
+                <div class="card-title">Mapa do Metrô (Alta Resolução)</div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title">💡 Dica</div>
+                Clique na imagem para abrir em tela cheia. Use os dedos para dar zoom no celular!
+            </div>
+
+            <!-- Map Container with Zoom -->
+            <div id="map-container" style="position: relative; border-radius: 12px; overflow: hidden; margin: 15px 0; background: #fff; border: 2px solid var(--light);">
+                <img
+                    id="metro-map"
+                    src="https://www.ratp.fr/sites/default/files/plans-lignes/Plans-essentiels/Plan-Metro.1733929904.png"
+                    alt="Mapa do Metrô de Paris - RATP"
+                    style="width: 100%; height: auto; cursor: zoom-in; display: block;"
+                    onclick="openFullscreen(this)"
+                    onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Paris_Metro_map_with_main_stations.svg/1280px-Paris_Metro_map_with_main_stations.svg.png';"
+                >
+            </div>
+
+            <!-- Zoom Controls -->
+            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 15px;">
+                <button onclick="openFullscreen(document.getElementById('metro-map'))" style="padding: 12px 20px; border: none; background: var(--primary); color: white; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                    🔍 Ver em Tela Cheia
+                </button>
+            </div>
+
+            <!-- Download Links -->
+            <div style="background: var(--light); border-radius: 12px; padding: 15px;">
+                <div style="font-weight: 700; margin-bottom: 10px;">📥 Baixar Mapa Oficial (PDF Alta Resolução)</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <a href="https://www.ratp.fr/sites/default/files/plans-lignes/Plans-essentiels/Plan-Metro.1733929904.pdf" target="_blank" rel="noopener" style="padding: 10px 15px; background: var(--secondary); color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em; font-weight: 600;">
+                        🚇 Metrô PDF
+                    </a>
+                    <a href="https://www.ratp.fr/sites/default/files/plans-lignes/Plans-essentiels/Plan-RER-et-transiliens.1718184932.pdf" target="_blank" rel="noopener" style="padding: 10px 15px; background: var(--rera); color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em; font-weight: 600;">
+                        🚆 RER + Transilien PDF
+                    </a>
+                    <a href="https://www.ratp.fr/en/plans" target="_blank" rel="noopener" style="padding: 10px 15px; background: var(--success); color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em; font-weight: 600;">
+                        🗺️ Todos os Mapas RATP
+                    </a>
+                </div>
+            </div>
+
+            <!-- Your Lines Highlight -->
+            <div style="margin-top: 20px;">
+                <div style="font-weight: 700; margin-bottom: 10px;">🎯 Suas Linhas Principais</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 15px; background: var(--line7); border-radius: 8px;">
+                        <span style="font-weight: 700;">Linha 7</span>
+                        <span style="font-size: 0.85em;">Villejuif ↔ Châtelet ↔ Place d'Italie</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 15px; background: var(--line6); border-radius: 8px;">
+                        <span style="font-weight: 700;">Linha 6</span>
+                        <span style="font-size: 0.85em;">Place d'Italie ↔ Bir-Hakeim (Torre)</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 15px; background: var(--rera); color: white; border-radius: 8px;">
+                        <span style="font-weight: 700;">RER A</span>
+                        <span style="font-size: 0.85em;">Châtelet ↔ Disneyland</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 15px; background: var(--tramt7); color: white; border-radius: 8px;">
+                        <span style="font-weight: 700;">Tram T7</span>
+                        <span style="font-size: 0.85em;">Orly ↔ Villejuif</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fullscreen Modal -->
+        <div id="fullscreen-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; overflow: auto;">
+            <button onclick="closeFullscreen()" style="position: fixed; top: 15px; right: 15px; z-index: 10000; padding: 10px 20px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1em;">
+                ✕ Fechar
+            </button>
+            <div style="position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); z-index: 10000; display: flex; gap: 10px;">
+                <button onclick="zoomMap(0.2)" style="padding: 10px 20px; background: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1.2em;">➕</button>
+                <button onclick="zoomMap(-0.2)" style="padding: 10px 20px; background: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1.2em;">➖</button>
+                <button onclick="resetZoom()" style="padding: 10px 20px; background: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">Reset</button>
+            </div>
+            <div id="map-scroll-container" style="width: 100%; height: 100%; overflow: auto; display: flex; align-items: center; justify-content: center; padding: 60px 20px;">
+                <img id="fullscreen-map" src="" alt="Mapa do Metrô" style="max-width: none; transform-origin: center center; transition: transform 0.2s;">
+            </div>
+        </div>
+
         <!-- Apps -->
         <div class="card">
             <div class="card-header">
@@ -1294,6 +1380,7 @@
     </div>
 
     <script>
+        // Checklist functions
         function toggleCheck(element) {
             element.classList.toggle('checked');
             if (element.classList.contains('checked')) {
@@ -1301,7 +1388,6 @@
             } else {
                 element.innerHTML = '';
             }
-            // Save to localStorage
             saveChecklist();
         }
 
@@ -1333,6 +1419,87 @@
                 });
             }
         }
+
+        // Metro Map Fullscreen functions
+        let currentZoom = 1;
+        const maxZoom = 4;
+        const minZoom = 0.5;
+
+        function openFullscreen(imgElement) {
+            const modal = document.getElementById('fullscreen-modal');
+            const fullscreenImg = document.getElementById('fullscreen-map');
+
+            // Use high resolution image for fullscreen
+            fullscreenImg.src = imgElement.src;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Reset zoom
+            currentZoom = 1;
+            fullscreenImg.style.transform = `scale(${currentZoom})`;
+            fullscreenImg.style.width = '100%';
+            fullscreenImg.style.maxWidth = '2000px';
+        }
+
+        function closeFullscreen() {
+            const modal = document.getElementById('fullscreen-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            currentZoom = 1;
+        }
+
+        function zoomMap(delta) {
+            const fullscreenImg = document.getElementById('fullscreen-map');
+            currentZoom = Math.min(maxZoom, Math.max(minZoom, currentZoom + delta));
+            fullscreenImg.style.transform = `scale(${currentZoom})`;
+        }
+
+        function resetZoom() {
+            const fullscreenImg = document.getElementById('fullscreen-map');
+            currentZoom = 1;
+            fullscreenImg.style.transform = `scale(${currentZoom})`;
+        }
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeFullscreen();
+            }
+        });
+
+        // Close modal on background click
+        document.getElementById('fullscreen-modal')?.addEventListener('click', function(e) {
+            if (e.target === this || e.target.id === 'map-scroll-container') {
+                closeFullscreen();
+            }
+        });
+
+        // Pinch to zoom on mobile
+        let initialDistance = 0;
+        let initialZoom = 1;
+
+        document.getElementById('map-scroll-container')?.addEventListener('touchstart', function(e) {
+            if (e.touches.length === 2) {
+                initialDistance = Math.hypot(
+                    e.touches[0].pageX - e.touches[1].pageX,
+                    e.touches[0].pageY - e.touches[1].pageY
+                );
+                initialZoom = currentZoom;
+            }
+        });
+
+        document.getElementById('map-scroll-container')?.addEventListener('touchmove', function(e) {
+            if (e.touches.length === 2) {
+                e.preventDefault();
+                const currentDistance = Math.hypot(
+                    e.touches[0].pageX - e.touches[1].pageX,
+                    e.touches[0].pageY - e.touches[1].pageY
+                );
+                const scale = currentDistance / initialDistance;
+                currentZoom = Math.min(maxZoom, Math.max(minZoom, initialZoom * scale));
+                document.getElementById('fullscreen-map').style.transform = `scale(${currentZoom})`;
+            }
+        });
 
         // Load checklist on page load
         document.addEventListener('DOMContentLoaded', loadChecklist);
