@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Paris 2026 - Transporte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #6c757d;
+            --line7: #fa9aba;
+            --line6: #6eca97;
+            --rera: #e3051c;
+            --tramt7: #b26222;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            font-size: 2em;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: var(--gray);
+            font-size: 1em;
+        }
+
+        .header .dates {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* Hotel Info */
+        .hotel-info {
+            background: linear-gradient(135deg, var(--primary) 0%, #2980b9 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hotel-info h3 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        .hotel-info .hotel-name {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hotel-info .hotel-address {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .zone-badge {
+            background: var(--warning);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* Route Cards */
+        .route-card {
+            border: 2px solid var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .route-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .route-title {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--dark);
+        }
+
+        .route-time {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        /* Metro Line Visual */
+        .route-visual {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .route-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .route-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-icon.start { background: var(--success); }
+        .step-icon.transfer { background: var(--warning); }
+        .step-icon.end { background: var(--accent); }
+        .step-icon.metro { background: var(--secondary); }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-station {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1em;
+        }
+
+        .step-detail {
+            color: var(--gray);
+            font-size: 0.9em;
+            margin-top: 3px;
+        }
+
+        .metro-line {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .line-7 { background: var(--line7); color: #000; }
+        .line-6 { background: var(--line6); color: #000; }
+        .rer-a { background: var(--rera); color: white; }
+        .tram-t7 { background: var(--tramt7); color: white; }
+
+        .line-connector {
+            position: absolute;
+            left: 19px;
+            top: 40px;
+            width: 3px;
+            height: calc(100% + 15px);
+            z-index: 1;
+        }
+
+        .route-step:last-child .line-connector {
+            display: none;
+        }
+
+        /* Price Table */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .price-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .price-table tr:nth-child(even) {
+            background: var(--light);
+        }
+
+        .price-table .price {
+            font-weight: 700;
+            color: var(--success);
+        }
+
+        .price-table .highlight {
+            background: #d5f5e3;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #e8f4fd;
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        .info-box.warning {
+            background: #fef5e7;
+            border-color: var(--warning);
+        }
+
+        .info-box.success {
+            background: #e8f8f0;
+            border-color: var(--success);
+        }
+
+        .info-box.danger {
+            background: #fdedec;
+            border-color: var(--accent);
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 500px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .comparison-item.bad {
+            background: #fdedec;
+            border: 2px solid var(--accent);
+        }
+
+        .comparison-item.good {
+            background: #e8f8f0;
+            border: 2px solid var(--success);
+        }
+
+        .comparison-label {
+            font-size: 0.9em;
+            color: var(--gray);
+            margin-bottom: 5px;
+        }
+
+        .comparison-value {
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .comparison-item.bad .comparison-value { color: var(--accent); }
+        .comparison-item.good .comparison-value { color: var(--success); }
+
+        .comparison-desc {
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+
+        /* Navigo Options */
+        .option-cards {
+            display: grid;
+            gap: 15px;
+        }
+
+        .option-card {
+            border: 2px solid var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .option-card.recommended {
+            border-color: var(--success);
+            background: #f0fff4;
+        }
+
+        .option-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+        }
+
+        .option-title {
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option-desc {
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+
+        .option-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .option-list li {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .check-box {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--secondary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .check-box:hover {
+            background: var(--light);
+        }
+
+        .check-box.checked {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        /* Station List */
+        .station-list {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .station-list-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .station {
+            background: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            border: 1px solid #ddd;
+        }
+
+        .station.highlight {
+            background: var(--warning);
+            border-color: var(--warning);
+            font-weight: 600;
+        }
+
+        .station.start {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+            font-weight: 600;
+        }
+
+        .station.end {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Zone Map */
+        .zone-map {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+            min-height: 300px;
+            overflow: hidden;
+        }
+
+        .zone-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px dashed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .zone-1 {
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-color: var(--primary);
+            background: rgba(30, 58, 95, 0.1);
+        }
+
+        .zone-3 {
+            width: 180px;
+            height: 180px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-color: var(--warning);
+            background: transparent;
+        }
+
+        .zone-5 {
+            width: 260px;
+            height: 260px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-color: var(--accent);
+            background: transparent;
+        }
+
+        .zone-label {
+            position: absolute;
+            font-size: 0.75em;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: white;
+        }
+
+        .map-point {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .map-point .icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Quick Reference */
+        .quick-ref {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        @media (max-width: 500px) {
+            .quick-ref {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .quick-item {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .quick-item .from-to {
+            font-size: 0.85em;
+            color: var(--gray);
+            margin-bottom: 5px;
+        }
+
+        .quick-item .time {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .quick-item .lines {
+            margin-top: 8px;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .quick-item .line-badge {
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        /* Accordion */
+        .accordion-header {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: background 0.2s;
+        }
+
+        .accordion-header:hover {
+            background: #e9ecef;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid var(--light);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .accordion-arrow {
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Apps */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        @media (max-width: 400px) {
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .app-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: var(--light);
+            border-radius: 10px;
+        }
+
+        .app-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .app-name {
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .app-desc {
+            font-size: 0.75em;
+            color: var(--gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .price-table th,
+            .price-table td {
+                padding: 10px 8px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🗼 Guia de Transporte Paris</h1>
+            <p class="subtitle">Tudo que você precisa saber para se locomover</p>
+            <div class="dates">📅 03 a 08 de Março de 2026</div>
+        </div>
+
+        <!-- Hotel Info -->
+        <div class="card">
+            <div class="hotel-info">
+                <h3>🏨 Seu Hotel</h3>
+                <div class="hotel-name">Ibis Styles Paris Villejuif</div>
+                <div class="hotel-address">📍 11 Avenue Louis Aragon, Villejuif 94800</div>
+                <div class="zone-badge">📍 ZONA 3</div>
+            </div>
+            <div class="info-box success">
+                <div class="info-box-title">✅ Estação mais próxima</div>
+                <strong>Villejuif-Louis Aragon</strong> - ~300m do hotel (5 min caminhando)<br>
+                Linhas: Metrô 7 + Tram T7
+            </div>
+        </div>
+
+        <!-- Quick Reference -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: #e8f4fd;">⚡</div>
+                <div class="card-title">Resumo Rápido</div>
+            </div>
+            <div class="quick-ref">
+                <div class="quick-item">
+                    <div class="from-to">✈️ Orly → 🏨 Hotel</div>
+                    <div class="time">45 min</div>
+                    <div class="lines">
+                        <span class="line-badge tram-t7">T7</span>
+                    </div>
+                </div>
+                <div class="quick-item">
+                    <div class="from-to">🏨 Hotel → 🗼 Torre</div>
+                    <div class="time">50 min</div>
+                    <div class="lines">
+                        <span class="line-badge line-7">L7</span>
+                        <span class="line-badge line-6">L6</span>
+                    </div>
+                </div>
+                <div class="quick-item">
+                    <div class="from-to">🏨 Hotel → 🏰 Disney</div>
+                    <div class="time">1h20</div>
+                    <div class="lines">
+                        <span class="line-badge line-7">L7</span>
+                        <span class="line-badge rer-a">RER A</span>
+                    </div>
+                </div>
+                <div class="quick-item">
+                    <div class="from-to">🏨 Hotel → ✈️ Orly</div>
+                    <div class="time">45 min</div>
+                    <div class="lines">
+                        <span class="line-badge tram-t7">T7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigo Card -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: #fef5e7;">💳</div>
+                <div class="card-title">Preciso do Cartão Navigo?</div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title">💡 Resposta curta</div>
+                <strong>NÃO necessariamente!</strong> Você pode usar o celular como cartão ou comprar o Navigo Easy em Paris.
+            </div>
+
+            <div class="option-cards">
+                <div class="option-card recommended">
+                    <span class="option-badge">RECOMENDADO</span>
+                    <div class="option-title">📱 Opção 1: Celular</div>
+                    <div class="option-desc">Use seu smartphone como cartão de transporte</div>
+                    <ul class="option-list">
+                        <li>iPhone XS ou superior (iOS 17.5+)</li>
+                        <li>Android 8+ com NFC</li>
+                        <li>App: <strong>Île-de-France Mobilités</strong></li>
+                        <li>Compre bilhetes pelo app</li>
+                        <li>Aproxime o celular na catraca</li>
+                    </ul>
+                </div>
+                <div class="option-card">
+                    <div class="option-title">💳 Opção 2: Navigo Easy</div>
+                    <div class="option-desc">Cartão físico recarregável</div>
+                    <ul class="option-list">
+                        <li>Custo do cartão: <strong>€2,00</strong></li>
+                        <li>Compre no guichê RATP no aeroporto</li>
+                        <li>Recarregue nas máquinas</li>
+                        <li>Funciona igual cartão de metrô</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-box warning" style="margin-top: 20px;">
+                <div class="info-box-title">⚠️ Dica importante</div>
+                Tente criar conta no app <strong>antes de viajar</strong>. Pode pedir número europeu para SMS de verificação. Se não conseguir, compre o Navigo Easy no Orly ao chegar.
+            </div>
+        </div>
+
+        <!-- Prices -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: #e8f8f0;">💰</div>
+                <div class="card-title">Preços dos Bilhetes (2025/2026)</div>
+            </div>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Preço</th>
+                        <th>Validade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bus-Tram</td>
+                        <td class="price">€2,00</td>
+                        <td>1 viagem</td>
+                    </tr>
+                    <tr>
+                        <td>Metro-Train-RER</td>
+                        <td class="price">€2,50</td>
+                        <td>1 viagem (zonas 1-5)</td>
+                    </tr>
+                    <tr>
+                        <td>Navigo Jour (diário)</td>
+                        <td class="price">€12,00</td>
+                        <td>Ilimitado (exceto aeroportos)</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>Navigo Semaine</strong> ⭐</td>
+                        <td class="price"><strong>€30,75</strong></td>
+                        <td><strong>7 dias ilimitado + aeroportos</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Paris Visite 5 dias</td>
+                        <td class="price">~€50</td>
+                        <td>Turista, zonas 1-5</td>
+                    </tr>
+                    <tr>
+                        <td>Bilhete Aeroporto</td>
+                        <td class="price">€13,00</td>
+                        <td>Paris ↔ Orly/CDG</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="comparison">
+                <div class="comparison-item bad">
+                    <div class="comparison-label">Bilhetes avulsos</div>
+                    <div class="comparison-value">~€59</div>
+                    <div class="comparison-desc">Comprando separado</div>
+                </div>
+                <div class="comparison-item good">
+                    <div class="comparison-label">Navigo Semaine</div>
+                    <div class="comparison-value">€30,75</div>
+                    <div class="comparison-desc">Economia de ~€28! 🎉</div>
+                </div>
+            </div>
+
+            <div class="info-box success">
+                <div class="info-box-title">✅ Veredicto</div>
+                <strong>Compre o Navigo Semaine!</strong> Inclui metrô, tram, RER, ônibus, aeroportos E Disneyland. Anda ilimitado por 7 dias.
+            </div>
+        </div>
+
+        <!-- Route 1: Orly to Hotel -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: #e8f4fd;">✈️</div>
+                <div class="card-title">Rota 1: Orly → Hotel</div>
+            </div>
+
+            <div class="route-card">
+                <div class="route-header">
+                    <div class="route-title">🚃 Tram T7 (Direto!)</div>
+                    <div class="route-time">⏱️ 45 min</div>
+                </div>
+
+                <div class="route-visual">
+                    <div class="route-step">
+                        <div class="step-icon start">✈️</div>
+                        <div class="line-connector" style="background: var(--tramt7);"></div>
+                        <div class="step-content">
+                            <div class="step-station">ORLY AIRPORT</div>
+                            <div class="step-detail">Terminal 4 - Siga placas "Tramway T7"</div>
+                            <div class="metro-line tram-t7">🚃 Tram T7 → Villejuif</div>
+                        </div>
+                    </div>
+                    <div class="route-step">
+                        <div class="step-icon end">🏨</div>
+                        <div class="step-content">
+                            <div class="step-station">VILLEJUIF-LOUIS ARAGON</div>
+                            <div class="step-detail">Última parada • 5 min caminhando até o hotel</div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="price-table" style="margin-top: 15px;">
+                    <tr>
+                        <td>Bilhete</td>
+                        <td class="price">€2,00 (Bus-Tram)</td>
+                    </tr>
+                    <tr>
+                        <td>Com Navigo Semaine</td>
+                        <td class="price">✅ Incluso</td>
+                    </tr>
+                    <tr>
+                        <td>Frequência</td>
+                        <td>A cada 6-10 min</td>
+                    </tr>
+                    <tr>
+                        <td>Horário</td>
+                        <td>5h30 às 0h30</td>
+                    </tr>
+                </table>
+
+                <div class="info-box" style="margin-top: 15px;">
+                    <div class="info-box-title">💡 Por que essa rota?</div>
+                    É a mais simples! Sem baldeações, direto do aeroporto até a porta do hotel.
+                </div>
+            </div>
+        </div>
+
+        <!-- Route 2: Hotel to Eiffel Tower -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: #fef5e7;">🗼</div>
+                <div class="card-title">Rota 2: Hotel → Torre Eiffel</div>
+            </div>
+
+            <div class="route-card">
+                <div class="route-header">
+                    <div class="route-title">🚇 Metrô Linha 7 + Linha 6</div>
+                    <div class="route-time">⏱️ 50 min</div>
+                </div>
+
+                <div class="route-visual">
+                    <div class="route-step">
+                        <div class="step-icon start">🏨</div>
+                        <div class="line-connector" style="background: var(--line7);"></div>
+                        <div class="step-content">
+                            <div class="step-station">VILLEJUIF-LOUIS ARAGON</div>
+                            <div class="step-detail">5 min caminhando do hotel</div>
+                            <div class="metro-line line-7">Ⓜ️ Linha 7 → La Courneuve</div>
+                        </div>
+                    </div>
+                    <div class="route-step">
+                        <div class="step-icon transfer">🔄</div>
+                        <div class="line-connector" style="background: var(--line6);"></div>
+                        <div class="step-content">
+                            <div class="step-station">PLACE D'ITALIE</div>
+                            <div class="step-detail">Baldeação • 7 estações (~15 min)</div>
+                            <div class="metro-line line-6">Ⓜ️ Linha 6 → Charles de Gaulle Étoile</div>
+                        </div>
+                    </div>
+                    <div class="route-step">
+                        <div class="step-icon end">🗼</div>
+                        <div class="step-content">
+                            <div class="step-station">BIR-HAKEIM</div>
+                            <div class="step-detail">14 estações (~25 min) • 10 min caminhando até a Torre</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    📍 Ver todas as estações
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="station-list">
+                        <div class="station-list-title"><span class="metro-line line-7" style="padding: 4px 10px;">Linha 7</span></div>
+                        <div class="stations">
+                            <span class="station start">Villejuif-Louis Aragon</span>
+                            <span class="station">Villejuif-Léo Lagrange</span>
+                            <span class="station">Villejuif-Paul Vaillant-Couturier</span>
+                            <span class="station">Le Kremlin-Bicêtre</span>
+                            <span class="station">Maison Blanche</span>
+                            <span class="station">Tolbiac</span>
+                            <span class="station highlight">Place d'Italie 🔄</span>
+                        </div>
+                    </div>
+                    <div class="station-list">
+                        <div class="station-list-title"><span class="metro-line line-6" style="padding: 4px 10px;">Linha 6</span></div>
+                        <div class="stations">
+                            <span class="station highlight">Place d'Italie 🔄</span>
+                            <span class="station">Corvisart</span>
+                            <span class="station">Glacière</span>
+                            <span class="station">Saint-Jacques</span>
+                            <span class="station">Denfert-Rochereau</span>
+                            <span class="station">Raspail</span>
+                            <span class="station">Edgar Quinet</span>
+                            <span class="station">Montparnasse</span>
+                            <span class="station">Pasteur</span>
+                            <span class="station">Sèvres-Lecourbe</span>
+                            <span class="station">Cambronne</span>
+                            <span class="station">La Motte-Picquet</span>
+                            <span class="station">Dupleix</span>
+                            <span class="station end">Bir-Hakeim 🗼</span>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="price-table" style="margin-top: 15px;">
+                    <tr>
+                        <td>Bilhete</td>
+                        <td class="price">€2,50 (Metro-Train-RER)</td>
+                    </tr>
+                    <tr>
+                        <td>Com Navigo Semaine</td>
+                        <td class="price">✅ Incluso</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Route 3: Hotel to Disneyland -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: #fdedec;">🏰</div>
+                <div class="card-title">Rota 3: Hotel → Disneyland</div>
+            </div>
+
+            <div class="route-card">
+                <div class="route-header">
+                    <div class="route-title">🚇 Metrô Linha 7 + RER A</div>
+                    <div class="route-time">⏱️ 1h20</div>
+                </div>
+
+                <div class="route-visual">
+                    <div class="route-step">
+                        <div class="step-icon start">🏨</div>
+                        <div class="line-connector" style="background: var(--line7);"></div>
+                        <div class="step-content">
+                            <div class="step-station">VILLEJUIF-LOUIS ARAGON</div>
+                            <div class="step-detail">5 min caminhando do hotel</div>
+                            <div class="metro-line line-7">Ⓜ️ Linha 7 → La Courneuve</div>
+                        </div>
+                    </div>
+                    <div class="route-step">
+                        <div class="step-icon transfer">🔄</div>
+                        <div class="line-connector" style="background: var(--rera);"></div>
+                        <div class="step-content">
+                            <div class="step-station">CHÂTELET</div>
+                            <div class="step-detail">11 estações (~20 min) • Siga placas "RER A"</div>
+                            <div class="metro-line rer-a">🚆 RER A → Marne-la-Vallée</div>
+                        </div>
+                    </div>
+                    <div class="route-step">
+                        <div class="step-icon end">🏰</div>
+                        <div class="step-content">
+                            <div class="step-station">MARNE-LA-VALLÉE CHESSY</div>
+                            <div class="step-detail">~40 min de RER • 2 min caminhando até a Disney</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box danger" style="margin-top: 15px;">
+                    <div class="info-box-title">⚠️ Muito importante!</div>
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li><strong>Guarde o bilhete!</strong> Você precisa dele para SAIR na Disney</li>
+                        <li>Verifique o destino do RER A - Nem todos vão para Disney</li>
+                        <li>Pegue trens com destino <strong>"Marne-la-Vallée Chessy"</strong></li>
+                    </ul>
+                </div>
+
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    📍 Ver estações Linha 7 (Hotel → Châtelet)
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="station-list">
+                        <div class="station-list-title"><span class="metro-line line-7" style="padding: 4px 10px;">Linha 7</span></div>
+                        <div class="stations">
+                            <span class="station start">Villejuif-Louis Aragon</span>
+                            <span class="station">Villejuif-Léo Lagrange</span>
+                            <span class="station">Villejuif-Paul Vaillant-Couturier</span>
+                            <span class="station">Le Kremlin-Bicêtre</span>
+                            <span class="station">Maison Blanche</span>
+                            <span class="station">Tolbiac</span>
+                            <span class="station">Place d'Italie</span>
+                            <span class="station">Les Gobelins</span>
+                            <span class="station">Censier-Daubenton</span>
+                            <span class="station">Jussieu</span>
+                            <span class="station">Pont Marie</span>
+                            <span class="station highlight">Châtelet 🔄</span>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="price-table" style="margin-top: 15px;">
+                    <tr>
+                        <td>Bilhete avulso</td>
+                        <td class="price">€5,00 - €8,00</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>Com Navigo Semaine</td>
+                        <td class="price">✅ INCLUSO!</td>
+                    </tr>
+                    <tr>
+                        <td>Zona</td>
+                        <td>Zona 5</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Zone Map -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: #e8f4fd;">🗺️</div>
+                <div class="card-title">Mapa das Zonas</div>
+            </div>
+
+            <div style="background: var(--light); border-radius: 12px; padding: 20px; text-align: center;">
+                <pre style="font-family: monospace; font-size: 11px; line-height: 1.3; text-align: left; display: inline-block;">
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│   ✈️ CDG                    🏰 DISNEYLAND       │
+│   (Zona 5)                    (Zona 5)          │
+│        ╲                        ╱               │
+│         ╲    ┌──────────┐      ╱                │
+│          ╲   │ ZONA 1   │     ╱                 │
+│           ╲  │ 🗼 Torre │    ╱                  │
+│            ╲ │ 🏛️ Louvre│   ╱                   │
+│             ╲│ Centro   │  ╱                    │
+│              └──────────┘ ╱                     │
+│                  │       ╱                      │
+│            ┌──────────┐ ╱                       │
+│            │ ZONA 3   │╱                        │
+│            │🏨 HOTEL  │                         │
+│            │Villejuif │                         │
+│            └──────────┘                         │
+│                  │                              │
+│            ┌──────────┐                         │
+│            │ ZONA 4   │                         │
+│            │ ✈️ ORLY  │                         │
+│            └──────────┘                         │
+│                                                 │
+│  ════════════════════════════════════════════  │
+│  NAVIGO SEMAINE (€30,75) = ZONAS 1-5 + AERO    │
+│  ════════════════════════════════════════════  │
+└─────────────────────────────────────────────────┘
+                </pre>
+            </div>
+        </div>
+
+        <!-- Apps -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: #e8f8f0;">📱</div>
+                <div class="card-title">Apps Úteis</div>
+            </div>
+            <div class="apps-grid">
+                <div class="app-item">
+                    <div class="app-icon">🚇</div>
+                    <div>
+                        <div class="app-name">Île-de-France Mobilités</div>
+                        <div class="app-desc">Comprar bilhetes</div>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon">🗺️</div>
+                    <div>
+                        <div class="app-name">Bonjour RATP</div>
+                        <div class="app-desc">Mapa metrô tempo real</div>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon">📍</div>
+                    <div>
+                        <div class="app-name">Google Maps</div>
+                        <div class="app-desc">Rotas e horários</div>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon">🚌</div>
+                    <div>
+                        <div class="app-name">Citymapper</div>
+                        <div class="app-desc">Melhor p/ transporte</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checklist -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon" style="background: #fef5e7;">✅</div>
+                <div class="card-title">Checklist Transporte</div>
+            </div>
+            <ul class="checklist">
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span>Verificar se celular tem NFC</span>
+                </li>
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span>Baixar app Île-de-France Mobilités</span>
+                </li>
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span>Tentar criar conta no app</span>
+                </li>
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span>Se não funcionar: comprar Navigo Easy (€2)</span>
+                </li>
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span>Carregar Navigo Semaine (€30,75)</span>
+                </li>
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span>Baixar mapas offline do metrô</span>
+                </li>
+                <li>
+                    <div class="check-box" onclick="toggleCheck(this)"></div>
+                    <span>Salvar este guia no celular</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>📍 Guia criado para viagem Março/2026</p>
+            <p>Preços sujeitos a alteração</p>
+            <p style="margin-top: 10px;">Bon voyage! 🇫🇷</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+            if (element.classList.contains('checked')) {
+                element.innerHTML = '✓';
+            } else {
+                element.innerHTML = '';
+            }
+            // Save to localStorage
+            saveChecklist();
+        }
+
+        function toggleAccordion(element) {
+            element.classList.toggle('active');
+            const content = element.nextElementSibling;
+            content.classList.toggle('active');
+        }
+
+        function saveChecklist() {
+            const checks = document.querySelectorAll('.check-box');
+            const states = [];
+            checks.forEach(check => {
+                states.push(check.classList.contains('checked'));
+            });
+            localStorage.setItem('paris-checklist', JSON.stringify(states));
+        }
+
+        function loadChecklist() {
+            const saved = localStorage.getItem('paris-checklist');
+            if (saved) {
+                const states = JSON.parse(saved);
+                const checks = document.querySelectorAll('.check-box');
+                checks.forEach((check, index) => {
+                    if (states[index]) {
+                        check.classList.add('checked');
+                        check.innerHTML = '✓';
+                    }
+                });
+            }
+        }
+
+        // Load checklist on page load
+        document.addEventListener('DOMContentLoaded', loadChecklist);
+    </script>
+</body>
+</html>
