@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Paris 2026 - Transporte</title>
+    <meta name="theme-color" content="#2563eb">
+    <title>Guia Paris 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e3a5f;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --light: #f8f9fa;
-            --dark: #2c3e50;
-            --gray: #6c757d;
+            --blue: #2563eb;
+            --blue-light: #dbeafe;
+            --green: #16a34a;
+            --green-light: #dcfce7;
+            --red: #dc2626;
+            --red-light: #fee2e2;
+            --orange: #ea580c;
+            --orange-light: #ffedd5;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
             --line7: #fa9aba;
             --line6: #6eca97;
             --rera: #e3051c;
@@ -30,214 +38,193 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--gray-100);
             min-height: 100vh;
-            padding: 20px;
-            line-height: 1.6;
+            padding: 16px;
+            line-height: 1.5;
+            color: var(--gray-900);
         }
 
         .container {
-            max-width: 800px;
+            max-width: 640px;
             margin: 0 auto;
         }
 
         /* Header */
         .header {
             background: white;
-            border-radius: 20px;
-            padding: 30px;
+            border: 1px solid var(--gray-200);
+            padding: 24px;
             text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 16px;
         }
 
         .header h1 {
-            font-size: 2em;
-            color: var(--primary);
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 4px;
         }
 
         .header .subtitle {
-            color: var(--gray);
-            font-size: 1em;
+            color: var(--gray-500);
+            font-size: 0.875rem;
         }
 
         .header .dates {
-            background: var(--primary);
+            background: var(--blue);
             color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
+            padding: 8px 16px;
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 12px;
             font-weight: 600;
+            font-size: 0.875rem;
         }
 
         /* Cards */
         .card {
             background: white;
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 1px solid var(--gray-200);
+            padding: 20px;
+            margin-bottom: 16px;
         }
 
         .card-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--light);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--gray-200);
         }
 
         .card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5em;
+            font-size: 1.25rem;
+            flex-shrink: 0;
         }
 
         .card-title {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: var(--dark);
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         /* Hotel Info */
-        .hotel-info {
-            background: linear-gradient(135deg, var(--primary) 0%, #2980b9 100%);
+        .hotel-box {
+            background: var(--blue);
             color: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 16px;
+            margin-bottom: 16px;
         }
 
-        .hotel-info h3 {
-            font-size: 1.1em;
-            margin-bottom: 5px;
-            opacity: 0.9;
+        .hotel-box h3 {
+            font-size: 0.75rem;
+            font-weight: 500;
+            opacity: 0.8;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .hotel-info .hotel-name {
-            font-size: 1.4em;
+        .hotel-box .name {
+            font-size: 1.125rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .hotel-info .hotel-address {
+        .hotel-box .address {
             opacity: 0.9;
-            font-size: 0.95em;
+            font-size: 0.875rem;
         }
 
-        .zone-badge {
-            background: var(--warning);
-            color: var(--dark);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 700;
+        .zone-tag {
+            background: var(--orange);
+            color: white;
+            padding: 4px 12px;
             display: inline-block;
-            margin-top: 10px;
-        }
-
-        /* Route Cards */
-        .route-card {
-            border: 2px solid var(--light);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-
-        .route-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .route-title {
-            font-weight: 700;
-            font-size: 1.1em;
-            color: var(--dark);
-        }
-
-        .route-time {
-            background: var(--secondary);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-        }
-
-        /* Metro Line Visual */
-        .route-visual {
-            background: var(--light);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px 0;
-        }
-
-        .route-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .route-step:last-child {
-            margin-bottom: 0;
-        }
-
-        .step-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2em;
-            flex-shrink: 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .step-icon.start { background: var(--success); }
-        .step-icon.transfer { background: var(--warning); }
-        .step-icon.end { background: var(--accent); }
-        .step-icon.metro { background: var(--secondary); }
-
-        .step-content {
-            flex: 1;
-        }
-
-        .step-station {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 1em;
-        }
-
-        .step-detail {
-            color: var(--gray);
-            font-size: 0.9em;
-            margin-top: 3px;
-        }
-
-        .metro-line {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9em;
             margin-top: 8px;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-size: 0.875rem;
+            border-left: 4px solid;
+        }
+
+        .info-box.blue {
+            background: var(--blue-light);
+            border-color: var(--blue);
+        }
+
+        .info-box.green {
+            background: var(--green-light);
+            border-color: var(--green);
+        }
+
+        .info-box.orange {
+            background: var(--orange-light);
+            border-color: var(--orange);
+        }
+
+        .info-box.red {
+            background: var(--red-light);
+            border-color: var(--red);
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Quick Grid */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .quick-item {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            padding: 16px;
+            text-align: center;
+        }
+
+        .quick-item .route {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-bottom: 4px;
+        }
+
+        .quick-item .time {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .quick-item .lines {
+            margin-top: 8px;
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        /* Line Badges */
+        .line-badge {
+            padding: 2px 8px;
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .line-7 { background: var(--line7); color: #000; }
@@ -245,185 +232,419 @@
         .rer-a { background: var(--rera); color: white; }
         .tram-t7 { background: var(--tramt7); color: white; }
 
-        .line-connector {
+        /* Map Section */
+        .map-section {
+            text-align: center;
+        }
+
+        .map-placeholder {
+            background: var(--gray-50);
+            border: 2px dashed var(--gray-300);
+            padding: 32px 16px;
+            margin: 16px 0;
+        }
+
+        .map-placeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+
+        .map-placeholder-text {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+        }
+
+        .map-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn {
+            display: block;
+            padding: 14px 20px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--gray-700);
+            color: white;
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--gray-700);
+            border: 2px solid var(--gray-300);
+        }
+
+        .lines-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .line-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            font-size: 0.8125rem;
+        }
+
+        .line-item .name {
+            font-weight: 600;
+        }
+
+        /* Route Card */
+        .route-card {
+            border: 1px solid var(--gray-200);
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .route-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .route-title {
+            font-weight: 600;
+        }
+
+        .route-time {
+            background: var(--blue);
+            color: white;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .route-steps {
+            background: var(--gray-50);
+            padding: 16px;
+        }
+
+        .step {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-dot {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.875rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-dot.start { background: var(--green); color: white; }
+        .step-dot.transfer { background: var(--orange); color: white; }
+        .step-dot.end { background: var(--red); color: white; }
+
+        .step-line {
             position: absolute;
-            left: 19px;
-            top: 40px;
-            width: 3px;
-            height: calc(100% + 15px);
+            left: 15px;
+            top: 32px;
+            width: 2px;
+            height: calc(100% + 16px);
             z-index: 1;
         }
 
-        .route-step:last-child .line-connector {
+        .step:last-child .step-line {
             display: none;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 4px;
+        }
+
+        .step-station {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .step-detail {
+            color: var(--gray-500);
+            font-size: 0.8125rem;
+            margin-top: 2px;
+        }
+
+        .step-metro {
+            display: inline-block;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 6px;
         }
 
         /* Price Table */
         .price-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0;
+            font-size: 0.875rem;
         }
 
         .price-table th,
         .price-table td {
-            padding: 12px 15px;
+            padding: 12px 8px;
             text-align: left;
-            border-bottom: 1px solid var(--light);
+            border-bottom: 1px solid var(--gray-200);
         }
 
         .price-table th {
-            background: var(--primary);
+            background: var(--gray-700);
             color: white;
             font-weight: 600;
-        }
-
-        .price-table tr:nth-child(even) {
-            background: var(--light);
+            font-size: 0.75rem;
+            text-transform: uppercase;
         }
 
         .price-table .price {
             font-weight: 700;
-            color: var(--success);
+            color: var(--green);
         }
 
-        .price-table .highlight {
-            background: #d5f5e3;
-        }
-
-        /* Info Box */
-        .info-box {
-            background: #e8f4fd;
-            border-left: 4px solid var(--secondary);
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
-            margin: 15px 0;
-        }
-
-        .info-box.warning {
-            background: #fef5e7;
-            border-color: var(--warning);
-        }
-
-        .info-box.success {
-            background: #e8f8f0;
-            border-color: var(--success);
-        }
-
-        .info-box.danger {
-            background: #fdedec;
-            border-color: var(--accent);
-        }
-
-        .info-box-title {
-            font-weight: 700;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .price-table tr.highlight {
+            background: var(--green-light);
         }
 
         /* Comparison */
         .comparison {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        @media (max-width: 500px) {
-            .comparison {
-                grid-template-columns: 1fr;
-            }
+            gap: 12px;
+            margin: 16px 0;
         }
 
         .comparison-item {
             text-align: center;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 16px;
+            border: 2px solid;
         }
 
         .comparison-item.bad {
-            background: #fdedec;
-            border: 2px solid var(--accent);
+            border-color: var(--red);
+            background: var(--red-light);
         }
 
         .comparison-item.good {
-            background: #e8f8f0;
-            border: 2px solid var(--success);
+            border-color: var(--green);
+            background: var(--green-light);
         }
 
         .comparison-label {
-            font-size: 0.9em;
-            color: var(--gray);
-            margin-bottom: 5px;
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-bottom: 4px;
         }
 
         .comparison-value {
-            font-size: 1.8em;
+            font-size: 1.5rem;
             font-weight: 700;
         }
 
-        .comparison-item.bad .comparison-value { color: var(--accent); }
-        .comparison-item.good .comparison-value { color: var(--success); }
+        .comparison-item.bad .comparison-value { color: var(--red); }
+        .comparison-item.good .comparison-value { color: var(--green); }
 
-        .comparison-desc {
-            font-size: 0.85em;
-            margin-top: 5px;
-        }
-
-        /* Navigo Options */
-        .option-cards {
-            display: grid;
-            gap: 15px;
-        }
-
+        /* Options */
         .option-card {
-            border: 2px solid var(--light);
-            border-radius: 12px;
-            padding: 20px;
-            position: relative;
+            border: 1px solid var(--gray-200);
+            padding: 16px;
+            margin-bottom: 12px;
         }
 
         .option-card.recommended {
-            border-color: var(--success);
-            background: #f0fff4;
+            border: 2px solid var(--green);
+            background: var(--green-light);
         }
 
         .option-badge {
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            background: var(--success);
+            background: var(--green);
             color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75em;
+            padding: 2px 8px;
+            font-size: 0.625rem;
             font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: inline-block;
         }
 
         .option-title {
-            font-weight: 700;
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-weight: 600;
+            margin-bottom: 4px;
         }
 
         .option-desc {
-            color: var(--gray);
-            font-size: 0.9em;
+            color: var(--gray-500);
+            font-size: 0.875rem;
         }
 
         .option-list {
-            margin-top: 10px;
+            margin-top: 8px;
             padding-left: 20px;
+            font-size: 0.875rem;
         }
 
         .option-list li {
-            margin-bottom: 5px;
-            font-size: 0.9em;
+            margin-bottom: 4px;
+        }
+
+        /* Accordion */
+        .accordion-btn {
+            background: var(--gray-100);
+            border: 1px solid var(--gray-200);
+            padding: 12px 16px;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 16px;
+            border: 1px solid var(--gray-200);
+            border-top: none;
+            background: var(--gray-50);
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        /* Stations */
+        .station-group {
+            margin-bottom: 16px;
+        }
+
+        .station-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .station-group-title {
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 8px;
+        }
+
+        .stations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .station {
+            background: white;
+            border: 1px solid var(--gray-300);
+            padding: 4px 10px;
+            font-size: 0.75rem;
+        }
+
+        .station.highlight {
+            background: var(--orange);
+            color: white;
+            border-color: var(--orange);
+            font-weight: 600;
+        }
+
+        .station.start {
+            background: var(--green);
+            color: white;
+            border-color: var(--green);
+            font-weight: 600;
+        }
+
+        .station.end {
+            background: var(--red);
+            color: white;
+            border-color: var(--red);
+            font-weight: 600;
+        }
+
+        /* Zone ASCII */
+        .zone-map {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            padding: 16px;
+            overflow-x: auto;
+        }
+
+        .zone-map pre {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            line-height: 1.3;
+            margin: 0;
+            white-space: pre;
+        }
+
+        /* Apps */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .app-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+        }
+
+        .app-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .app-name {
+            font-weight: 600;
+            font-size: 0.8125rem;
+        }
+
+        .app-desc {
+            font-size: 0.75rem;
+            color: var(--gray-500);
         }
 
         /* Checklist */
@@ -436,7 +657,8 @@
             align-items: center;
             gap: 12px;
             padding: 12px 0;
-            border-bottom: 1px solid var(--light);
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 0.875rem;
         }
 
         .checklist li:last-child {
@@ -446,310 +668,62 @@
         .check-box {
             width: 24px;
             height: 24px;
-            border: 2px solid var(--secondary);
-            border-radius: 6px;
+            border: 2px solid var(--gray-300);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.2s;
             flex-shrink: 0;
-        }
-
-        .check-box:hover {
-            background: var(--light);
+            font-size: 0.875rem;
+            background: white;
         }
 
         .check-box.checked {
-            background: var(--success);
-            border-color: var(--success);
+            background: var(--green);
+            border-color: var(--green);
             color: white;
-        }
-
-        /* Station List */
-        .station-list {
-            background: var(--light);
-            border-radius: 12px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-
-        .station-list-title {
-            font-weight: 700;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .stations {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .station {
-            background: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            border: 1px solid #ddd;
-        }
-
-        .station.highlight {
-            background: var(--warning);
-            border-color: var(--warning);
-            font-weight: 600;
-        }
-
-        .station.start {
-            background: var(--success);
-            color: white;
-            border-color: var(--success);
-            font-weight: 600;
-        }
-
-        .station.end {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* Zone Map */
-        .zone-map {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-            border-radius: 16px;
-            padding: 25px;
-            position: relative;
-            min-height: 300px;
-            overflow: hidden;
-        }
-
-        .zone-circle {
-            position: absolute;
-            border-radius: 50%;
-            border: 2px dashed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .zone-1 {
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-color: var(--primary);
-            background: rgba(30, 58, 95, 0.1);
-        }
-
-        .zone-3 {
-            width: 180px;
-            height: 180px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-color: var(--warning);
-            background: transparent;
-        }
-
-        .zone-5 {
-            width: 260px;
-            height: 260px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-color: var(--accent);
-            background: transparent;
-        }
-
-        .zone-label {
-            position: absolute;
-            font-size: 0.75em;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 10px;
-            background: white;
-        }
-
-        .map-point {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.8em;
-            font-weight: 600;
-        }
-
-        .map-point .icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        /* Quick Reference */
-        .quick-ref {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        @media (max-width: 500px) {
-            .quick-ref {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .quick-item {
-            background: var(--light);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .quick-item .from-to {
-            font-size: 0.85em;
-            color: var(--gray);
-            margin-bottom: 5px;
-        }
-
-        .quick-item .time {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .quick-item .lines {
-            margin-top: 8px;
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-        }
-
-        .quick-item .line-badge {
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.75em;
-            font-weight: 600;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 20px;
-            color: white;
-            opacity: 0.8;
-            font-size: 0.9em;
-        }
-
-        /* Accordion */
-        .accordion-header {
-            background: var(--light);
-            padding: 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            margin-bottom: 10px;
-            transition: background 0.2s;
-        }
-
-        .accordion-header:hover {
-            background: #e9ecef;
-        }
-
-        .accordion-content {
-            display: none;
-            padding: 15px;
-            border: 1px solid var(--light);
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .accordion-content.active {
-            display: block;
-        }
-
-        .accordion-arrow {
-            transition: transform 0.3s;
-        }
-
-        .accordion-header.active .accordion-arrow {
-            transform: rotate(180deg);
-        }
-
-        /* Apps */
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        @media (max-width: 400px) {
-            .apps-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .app-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            background: var(--light);
-            border-radius: 10px;
-        }
-
-        .app-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2em;
-        }
-
-        .app-name {
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-
-        .app-desc {
-            font-size: 0.75em;
-            color: var(--gray);
+            padding: 24px;
+            color: var(--gray-500);
+            font-size: 0.875rem;
         }
 
         /* Responsive */
-        @media (max-width: 600px) {
+        @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 12px;
             }
 
             .header h1 {
-                font-size: 1.5em;
+                font-size: 1.25rem;
             }
 
             .card {
-                padding: 20px;
+                padding: 16px;
             }
 
-            .price-table th,
-            .price-table td {
-                padding: 10px 8px;
-                font-size: 0.85em;
+            .quick-item .time {
+                font-size: 1.25rem;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lines-list {
+                grid-template-columns: 1fr;
+            }
+
+            .zone-map pre {
+                font-size: 9px;
             }
         }
     </style>
@@ -757,43 +731,42 @@
 <body>
     <div class="container">
         <!-- Header -->
-        <div class="header">
-            <h1>🗼 Guia de Transporte Paris</h1>
-            <p class="subtitle">Tudo que você precisa saber para se locomover</p>
-            <div class="dates">📅 03 a 08 de Março de 2026</div>
-        </div>
+        <header class="header">
+            <h1>Guia Transporte Paris</h1>
+            <p class="subtitle">Rotas, precos e dicas para sua viagem</p>
+            <div class="dates">03 a 08 de Marco de 2026</div>
+        </header>
 
         <!-- Hotel Info -->
-        <div class="card">
-            <div class="hotel-info">
-                <h3>🏨 Seu Hotel</h3>
-                <div class="hotel-name">Ibis Styles Paris Villejuif</div>
-                <div class="hotel-address">📍 11 Avenue Louis Aragon, Villejuif 94800</div>
-                <div class="zone-badge">📍 ZONA 3</div>
+        <section class="card">
+            <div class="hotel-box">
+                <h3>Seu Hotel</h3>
+                <div class="name">Ibis Styles Paris Villejuif</div>
+                <div class="address">11 Avenue Louis Aragon, Villejuif 94800</div>
+                <span class="zone-tag">ZONA 3</span>
             </div>
-            <div class="info-box success">
-                <div class="info-box-title">✅ Estação mais próxima</div>
-                <strong>Villejuif-Louis Aragon</strong> - ~300m do hotel (5 min caminhando)<br>
-                Linhas: Metrô 7 + Tram T7
+            <div class="info-box green">
+                <strong>Estacao mais proxima</strong>
+                Villejuif-Louis Aragon (~5 min caminhando) - Metro 7 + Tram T7
             </div>
-        </div>
+        </section>
 
         <!-- Quick Reference -->
-        <div class="card">
+        <section class="card">
             <div class="card-header">
-                <div class="card-icon" style="background: #e8f4fd;">⚡</div>
-                <div class="card-title">Resumo Rápido</div>
+                <div class="card-icon">⚡</div>
+                <div class="card-title">Resumo Rapido</div>
             </div>
-            <div class="quick-ref">
+            <div class="quick-grid">
                 <div class="quick-item">
-                    <div class="from-to">✈️ Orly → 🏨 Hotel</div>
+                    <div class="route">Orly → Hotel</div>
                     <div class="time">45 min</div>
                     <div class="lines">
-                        <span class="line-badge tram-t7">T7</span>
+                        <span class="line-badge tram-t7">Tram T7</span>
                     </div>
                 </div>
                 <div class="quick-item">
-                    <div class="from-to">🏨 Hotel → 🗼 Torre</div>
+                    <div class="route">Hotel → Torre</div>
                     <div class="time">50 min</div>
                     <div class="lines">
                         <span class="line-badge line-7">L7</span>
@@ -801,7 +774,7 @@
                     </div>
                 </div>
                 <div class="quick-item">
-                    <div class="from-to">🏨 Hotel → 🏰 Disney</div>
+                    <div class="route">Hotel → Disney</div>
                     <div class="time">1h20</div>
                     <div class="lines">
                         <span class="line-badge line-7">L7</span>
@@ -809,69 +782,114 @@
                     </div>
                 </div>
                 <div class="quick-item">
-                    <div class="from-to">🏨 Hotel → ✈️ Orly</div>
+                    <div class="route">Hotel → Orly</div>
                     <div class="time">45 min</div>
                     <div class="lines">
-                        <span class="line-badge tram-t7">T7</span>
+                        <span class="line-badge tram-t7">Tram T7</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Metro Map -->
+        <section class="card">
+            <div class="card-header">
+                <div class="card-icon">🗺️</div>
+                <div class="card-title">Mapa do Metro</div>
+            </div>
+
+            <div class="map-section">
+                <div class="map-placeholder">
+                    <div class="map-placeholder-icon">🗺️</div>
+                    <div class="map-placeholder-text">
+                        Acesse o mapa oficial do metro de Paris para visualizar em alta resolucao
+                    </div>
+                    <div class="map-buttons">
+                        <a href="https://www.ratp.fr/plan-metro" target="_blank" rel="noopener" class="btn btn-primary">
+                            Ver Mapa Oficial RATP
+                        </a>
+                        <a href="https://www.ratp.fr/plan-de-ligne/metro" target="_blank" rel="noopener" class="btn btn-secondary">
+                            Mapas por Linha
+                        </a>
+                        <a href="https://cfranger.com/paris-metro-map/" target="_blank" rel="noopener" class="btn btn-outline">
+                            Mapa Interativo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="info-box blue">
+                    <strong>Dica</strong>
+                    Baixe o mapa offline no app Citymapper ou Google Maps antes de viajar!
+                </div>
+            </div>
+
+            <div style="font-weight: 600; margin: 16px 0 8px;">Suas Linhas</div>
+            <div class="lines-list">
+                <div class="line-item" style="background: var(--line7);">
+                    <span class="name">Linha 7</span>
+                    <span>Hotel ↔ Centro</span>
+                </div>
+                <div class="line-item" style="background: var(--line6);">
+                    <span class="name">Linha 6</span>
+                    <span>→ Torre Eiffel</span>
+                </div>
+                <div class="line-item" style="background: var(--rera); color: white;">
+                    <span class="name">RER A</span>
+                    <span>→ Disneyland</span>
+                </div>
+                <div class="line-item" style="background: var(--tramt7); color: white;">
+                    <span class="name">Tram T7</span>
+                    <span>Orly ↔ Hotel</span>
+                </div>
+            </div>
+        </section>
 
         <!-- Navigo Card -->
-        <div class="card">
+        <section class="card">
             <div class="card-header">
-                <div class="card-icon" style="background: #fef5e7;">💳</div>
-                <div class="card-title">Preciso do Cartão Navigo?</div>
+                <div class="card-icon">💳</div>
+                <div class="card-title">Preciso do Cartao Navigo?</div>
             </div>
 
-            <div class="info-box">
-                <div class="info-box-title">💡 Resposta curta</div>
-                <strong>NÃO necessariamente!</strong> Você pode usar o celular como cartão ou comprar o Navigo Easy em Paris.
+            <div class="info-box blue">
+                <strong>Resposta</strong>
+                NAO obrigatorio! Voce pode usar o celular ou comprar o Navigo Easy em Paris.
             </div>
 
-            <div class="option-cards">
-                <div class="option-card recommended">
-                    <span class="option-badge">RECOMENDADO</span>
-                    <div class="option-title">📱 Opção 1: Celular</div>
-                    <div class="option-desc">Use seu smartphone como cartão de transporte</div>
-                    <ul class="option-list">
-                        <li>iPhone XS ou superior (iOS 17.5+)</li>
-                        <li>Android 8+ com NFC</li>
-                        <li>App: <strong>Île-de-France Mobilités</strong></li>
-                        <li>Compre bilhetes pelo app</li>
-                        <li>Aproxime o celular na catraca</li>
-                    </ul>
-                </div>
-                <div class="option-card">
-                    <div class="option-title">💳 Opção 2: Navigo Easy</div>
-                    <div class="option-desc">Cartão físico recarregável</div>
-                    <ul class="option-list">
-                        <li>Custo do cartão: <strong>€2,00</strong></li>
-                        <li>Compre no guichê RATP no aeroporto</li>
-                        <li>Recarregue nas máquinas</li>
-                        <li>Funciona igual cartão de metrô</li>
-                    </ul>
-                </div>
+            <div class="option-card recommended">
+                <span class="option-badge">Recomendado</span>
+                <div class="option-title">Celular</div>
+                <div class="option-desc">Use o smartphone como cartao</div>
+                <ul class="option-list">
+                    <li>iPhone XS+ ou Android 8+ com NFC</li>
+                    <li>App: <strong>Ile-de-France Mobilites</strong></li>
+                    <li>Compre bilhetes pelo app</li>
+                </ul>
             </div>
 
-            <div class="info-box warning" style="margin-top: 20px;">
-                <div class="info-box-title">⚠️ Dica importante</div>
-                Tente criar conta no app <strong>antes de viajar</strong>. Pode pedir número europeu para SMS de verificação. Se não conseguir, compre o Navigo Easy no Orly ao chegar.
+            <div class="option-card">
+                <div class="option-title">Navigo Easy</div>
+                <div class="option-desc">Cartao fisico recarregavel</div>
+                <ul class="option-list">
+                    <li>Custo: <strong>€2,00</strong></li>
+                    <li>Compre no guiche RATP</li>
+                    <li>Recarregue nas maquinas</li>
+                </ul>
             </div>
-        </div>
+        </section>
 
         <!-- Prices -->
-        <div class="card">
+        <section class="card">
             <div class="card-header">
-                <div class="card-icon" style="background: #e8f8f0;">💰</div>
-                <div class="card-title">Preços dos Bilhetes (2025/2026)</div>
+                <div class="card-icon">💰</div>
+                <div class="card-title">Precos (2025/2026)</div>
             </div>
+
             <table class="price-table">
                 <thead>
                     <tr>
-                        <th>Tipo</th>
-                        <th>Preço</th>
+                        <th>Bilhete</th>
+                        <th>Preco</th>
                         <th>Validade</th>
                     </tr>
                 </thead>
@@ -882,462 +900,287 @@
                         <td>1 viagem</td>
                     </tr>
                     <tr>
-                        <td>Metro-Train-RER</td>
+                        <td>Metro-RER</td>
                         <td class="price">€2,50</td>
-                        <td>1 viagem (zonas 1-5)</td>
-                    </tr>
-                    <tr>
-                        <td>Navigo Jour (diário)</td>
-                        <td class="price">€12,00</td>
-                        <td>Ilimitado (exceto aeroportos)</td>
+                        <td>1 viagem</td>
                     </tr>
                     <tr class="highlight">
-                        <td><strong>Navigo Semaine</strong> ⭐</td>
+                        <td><strong>Navigo Semaine</strong></td>
                         <td class="price"><strong>€30,75</strong></td>
-                        <td><strong>7 dias ilimitado + aeroportos</strong></td>
+                        <td><strong>7 dias ilimitado</strong></td>
                     </tr>
                     <tr>
-                        <td>Paris Visite 5 dias</td>
-                        <td class="price">~€50</td>
-                        <td>Turista, zonas 1-5</td>
-                    </tr>
-                    <tr>
-                        <td>Bilhete Aeroporto</td>
-                        <td class="price">€13,00</td>
-                        <td>Paris ↔ Orly/CDG</td>
+                        <td>Navigo Jour</td>
+                        <td class="price">€12,00</td>
+                        <td>1 dia</td>
                     </tr>
                 </tbody>
             </table>
 
             <div class="comparison">
                 <div class="comparison-item bad">
-                    <div class="comparison-label">Bilhetes avulsos</div>
+                    <div class="comparison-label">Avulsos</div>
                     <div class="comparison-value">~€59</div>
-                    <div class="comparison-desc">Comprando separado</div>
                 </div>
                 <div class="comparison-item good">
                     <div class="comparison-label">Navigo Semaine</div>
                     <div class="comparison-value">€30,75</div>
-                    <div class="comparison-desc">Economia de ~€28! 🎉</div>
                 </div>
             </div>
 
-            <div class="info-box success">
-                <div class="info-box-title">✅ Veredicto</div>
-                <strong>Compre o Navigo Semaine!</strong> Inclui metrô, tram, RER, ônibus, aeroportos E Disneyland. Anda ilimitado por 7 dias.
+            <div class="info-box green">
+                <strong>Recomendacao</strong>
+                Compre o Navigo Semaine! Inclui metro, tram, RER, onibus, aeroportos e Disneyland. Economia de ~€28.
             </div>
-        </div>
+        </section>
 
         <!-- Route 1: Orly to Hotel -->
-        <div class="card">
+        <section class="card">
             <div class="card-header">
-                <div class="card-icon" style="background: #e8f4fd;">✈️</div>
-                <div class="card-title">Rota 1: Orly → Hotel</div>
+                <div class="card-icon">✈️</div>
+                <div class="card-title">Rota: Orly → Hotel</div>
             </div>
 
             <div class="route-card">
                 <div class="route-header">
-                    <div class="route-title">🚃 Tram T7 (Direto!)</div>
-                    <div class="route-time">⏱️ 45 min</div>
+                    <div class="route-title">Tram T7 (Direto!)</div>
+                    <div class="route-time">45 min</div>
                 </div>
 
-                <div class="route-visual">
-                    <div class="route-step">
-                        <div class="step-icon start">✈️</div>
-                        <div class="line-connector" style="background: var(--tramt7);"></div>
+                <div class="route-steps">
+                    <div class="step">
+                        <div class="step-dot start">✈️</div>
+                        <div class="step-line" style="background: var(--tramt7);"></div>
                         <div class="step-content">
                             <div class="step-station">ORLY AIRPORT</div>
-                            <div class="step-detail">Terminal 4 - Siga placas "Tramway T7"</div>
-                            <div class="metro-line tram-t7">🚃 Tram T7 → Villejuif</div>
+                            <div class="step-detail">Terminal 4 → Placas "Tramway T7"</div>
+                            <span class="step-metro tram-t7">T7 → Villejuif</span>
                         </div>
                     </div>
-                    <div class="route-step">
-                        <div class="step-icon end">🏨</div>
+                    <div class="step">
+                        <div class="step-dot end">🏨</div>
                         <div class="step-content">
                             <div class="step-station">VILLEJUIF-LOUIS ARAGON</div>
-                            <div class="step-detail">Última parada • 5 min caminhando até o hotel</div>
+                            <div class="step-detail">Ultima parada → 5 min ate o hotel</div>
                         </div>
                     </div>
                 </div>
 
-                <table class="price-table" style="margin-top: 15px;">
-                    <tr>
-                        <td>Bilhete</td>
-                        <td class="price">€2,00 (Bus-Tram)</td>
-                    </tr>
-                    <tr>
-                        <td>Com Navigo Semaine</td>
-                        <td class="price">✅ Incluso</td>
-                    </tr>
-                    <tr>
-                        <td>Frequência</td>
-                        <td>A cada 6-10 min</td>
-                    </tr>
-                    <tr>
-                        <td>Horário</td>
-                        <td>5h30 às 0h30</td>
-                    </tr>
-                </table>
-
-                <div class="info-box" style="margin-top: 15px;">
-                    <div class="info-box-title">💡 Por que essa rota?</div>
-                    É a mais simples! Sem baldeações, direto do aeroporto até a porta do hotel.
+                <div class="info-box blue" style="margin-top: 12px;">
+                    <strong>€2,00</strong> (Bus-Tram) ou incluso no Navigo Semaine
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Route 2: Hotel to Eiffel Tower -->
-        <div class="card">
+        <section class="card">
             <div class="card-header">
-                <div class="card-icon" style="background: #fef5e7;">🗼</div>
-                <div class="card-title">Rota 2: Hotel → Torre Eiffel</div>
+                <div class="card-icon">🗼</div>
+                <div class="card-title">Rota: Hotel → Torre Eiffel</div>
             </div>
 
             <div class="route-card">
                 <div class="route-header">
-                    <div class="route-title">🚇 Metrô Linha 7 + Linha 6</div>
-                    <div class="route-time">⏱️ 50 min</div>
+                    <div class="route-title">Linha 7 + Linha 6</div>
+                    <div class="route-time">50 min</div>
                 </div>
 
-                <div class="route-visual">
-                    <div class="route-step">
-                        <div class="step-icon start">🏨</div>
-                        <div class="line-connector" style="background: var(--line7);"></div>
+                <div class="route-steps">
+                    <div class="step">
+                        <div class="step-dot start">🏨</div>
+                        <div class="step-line" style="background: var(--line7);"></div>
                         <div class="step-content">
                             <div class="step-station">VILLEJUIF-LOUIS ARAGON</div>
-                            <div class="step-detail">5 min caminhando do hotel</div>
-                            <div class="metro-line line-7">Ⓜ️ Linha 7 → La Courneuve</div>
+                            <div class="step-detail">5 min do hotel</div>
+                            <span class="step-metro line-7">L7 → La Courneuve</span>
                         </div>
                     </div>
-                    <div class="route-step">
-                        <div class="step-icon transfer">🔄</div>
-                        <div class="line-connector" style="background: var(--line6);"></div>
+                    <div class="step">
+                        <div class="step-dot transfer">🔄</div>
+                        <div class="step-line" style="background: var(--line6);"></div>
                         <div class="step-content">
                             <div class="step-station">PLACE D'ITALIE</div>
-                            <div class="step-detail">Baldeação • 7 estações (~15 min)</div>
-                            <div class="metro-line line-6">Ⓜ️ Linha 6 → Charles de Gaulle Étoile</div>
+                            <div class="step-detail">Baldeacao (7 estacoes)</div>
+                            <span class="step-metro line-6">L6 → Charles de Gaulle Etoile</span>
                         </div>
                     </div>
-                    <div class="route-step">
-                        <div class="step-icon end">🗼</div>
+                    <div class="step">
+                        <div class="step-dot end">🗼</div>
                         <div class="step-content">
                             <div class="step-station">BIR-HAKEIM</div>
-                            <div class="step-detail">14 estações (~25 min) • 10 min caminhando até a Torre</div>
+                            <div class="step-detail">10 min caminhando ate a Torre</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    📍 Ver todas as estações
-                    <span class="accordion-arrow">▼</span>
-                </div>
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    Ver todas as estacoes
+                    <span>▼</span>
+                </button>
                 <div class="accordion-content">
-                    <div class="station-list">
-                        <div class="station-list-title"><span class="metro-line line-7" style="padding: 4px 10px;">Linha 7</span></div>
+                    <div class="station-group">
+                        <div class="station-group-title"><span class="line-badge line-7">Linha 7</span></div>
                         <div class="stations">
-                            <span class="station start">Villejuif-Louis Aragon</span>
-                            <span class="station">Villejuif-Léo Lagrange</span>
-                            <span class="station">Villejuif-Paul Vaillant-Couturier</span>
-                            <span class="station">Le Kremlin-Bicêtre</span>
+                            <span class="station start">Villejuif-L.A.</span>
+                            <span class="station">Villejuif-Leo L.</span>
+                            <span class="station">Villejuif-Paul V.C.</span>
+                            <span class="station">Le Kremlin-Bicetre</span>
                             <span class="station">Maison Blanche</span>
                             <span class="station">Tolbiac</span>
-                            <span class="station highlight">Place d'Italie 🔄</span>
+                            <span class="station highlight">Place d'Italie</span>
                         </div>
                     </div>
-                    <div class="station-list">
-                        <div class="station-list-title"><span class="metro-line line-6" style="padding: 4px 10px;">Linha 6</span></div>
+                    <div class="station-group">
+                        <div class="station-group-title"><span class="line-badge line-6">Linha 6</span></div>
                         <div class="stations">
-                            <span class="station highlight">Place d'Italie 🔄</span>
+                            <span class="station highlight">Place d'Italie</span>
                             <span class="station">Corvisart</span>
-                            <span class="station">Glacière</span>
+                            <span class="station">Glaciere</span>
                             <span class="station">Saint-Jacques</span>
-                            <span class="station">Denfert-Rochereau</span>
+                            <span class="station">Denfert-Roch.</span>
                             <span class="station">Raspail</span>
                             <span class="station">Edgar Quinet</span>
                             <span class="station">Montparnasse</span>
                             <span class="station">Pasteur</span>
-                            <span class="station">Sèvres-Lecourbe</span>
+                            <span class="station">Sevres-Lec.</span>
                             <span class="station">Cambronne</span>
                             <span class="station">La Motte-Picquet</span>
                             <span class="station">Dupleix</span>
-                            <span class="station end">Bir-Hakeim 🗼</span>
+                            <span class="station end">Bir-Hakeim</span>
                         </div>
                     </div>
                 </div>
-
-                <table class="price-table" style="margin-top: 15px;">
-                    <tr>
-                        <td>Bilhete</td>
-                        <td class="price">€2,50 (Metro-Train-RER)</td>
-                    </tr>
-                    <tr>
-                        <td>Com Navigo Semaine</td>
-                        <td class="price">✅ Incluso</td>
-                    </tr>
-                </table>
             </div>
-        </div>
+        </section>
 
         <!-- Route 3: Hotel to Disneyland -->
-        <div class="card">
+        <section class="card">
             <div class="card-header">
-                <div class="card-icon" style="background: #fdedec;">🏰</div>
-                <div class="card-title">Rota 3: Hotel → Disneyland</div>
+                <div class="card-icon">🏰</div>
+                <div class="card-title">Rota: Hotel → Disneyland</div>
             </div>
 
             <div class="route-card">
                 <div class="route-header">
-                    <div class="route-title">🚇 Metrô Linha 7 + RER A</div>
-                    <div class="route-time">⏱️ 1h20</div>
+                    <div class="route-title">Linha 7 + RER A</div>
+                    <div class="route-time">1h20</div>
                 </div>
 
-                <div class="route-visual">
-                    <div class="route-step">
-                        <div class="step-icon start">🏨</div>
-                        <div class="line-connector" style="background: var(--line7);"></div>
+                <div class="route-steps">
+                    <div class="step">
+                        <div class="step-dot start">🏨</div>
+                        <div class="step-line" style="background: var(--line7);"></div>
                         <div class="step-content">
                             <div class="step-station">VILLEJUIF-LOUIS ARAGON</div>
-                            <div class="step-detail">5 min caminhando do hotel</div>
-                            <div class="metro-line line-7">Ⓜ️ Linha 7 → La Courneuve</div>
+                            <div class="step-detail">5 min do hotel</div>
+                            <span class="step-metro line-7">L7 → La Courneuve</span>
                         </div>
                     </div>
-                    <div class="route-step">
-                        <div class="step-icon transfer">🔄</div>
-                        <div class="line-connector" style="background: var(--rera);"></div>
+                    <div class="step">
+                        <div class="step-dot transfer">🔄</div>
+                        <div class="step-line" style="background: var(--rera);"></div>
                         <div class="step-content">
-                            <div class="step-station">CHÂTELET</div>
-                            <div class="step-detail">11 estações (~20 min) • Siga placas "RER A"</div>
-                            <div class="metro-line rer-a">🚆 RER A → Marne-la-Vallée</div>
+                            <div class="step-station">CHATELET</div>
+                            <div class="step-detail">11 estacoes → Siga "RER A"</div>
+                            <span class="step-metro rer-a">RER A → Marne-la-Vallee</span>
                         </div>
                     </div>
-                    <div class="route-step">
-                        <div class="step-icon end">🏰</div>
+                    <div class="step">
+                        <div class="step-dot end">🏰</div>
                         <div class="step-content">
-                            <div class="step-station">MARNE-LA-VALLÉE CHESSY</div>
-                            <div class="step-detail">~40 min de RER • 2 min caminhando até a Disney</div>
+                            <div class="step-station">MARNE-LA-VALLEE CHESSY</div>
+                            <div class="step-detail">~40 min de RER → 2 min ate Disney</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="info-box danger" style="margin-top: 15px;">
-                    <div class="info-box-title">⚠️ Muito importante!</div>
-                    <ul style="margin-top: 10px; padding-left: 20px;">
-                        <li><strong>Guarde o bilhete!</strong> Você precisa dele para SAIR na Disney</li>
-                        <li>Verifique o destino do RER A - Nem todos vão para Disney</li>
-                        <li>Pegue trens com destino <strong>"Marne-la-Vallée Chessy"</strong></li>
-                    </ul>
+                <div class="info-box red" style="margin-top: 12px;">
+                    <strong>Importante!</strong>
+                    • Guarde o bilhete - precisa para SAIR<br>
+                    • Destino: "Marne-la-Vallee Chessy"<br>
+                    • Com Navigo Semaine: incluso
                 </div>
-
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    📍 Ver estações Linha 7 (Hotel → Châtelet)
-                    <span class="accordion-arrow">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <div class="station-list">
-                        <div class="station-list-title"><span class="metro-line line-7" style="padding: 4px 10px;">Linha 7</span></div>
-                        <div class="stations">
-                            <span class="station start">Villejuif-Louis Aragon</span>
-                            <span class="station">Villejuif-Léo Lagrange</span>
-                            <span class="station">Villejuif-Paul Vaillant-Couturier</span>
-                            <span class="station">Le Kremlin-Bicêtre</span>
-                            <span class="station">Maison Blanche</span>
-                            <span class="station">Tolbiac</span>
-                            <span class="station">Place d'Italie</span>
-                            <span class="station">Les Gobelins</span>
-                            <span class="station">Censier-Daubenton</span>
-                            <span class="station">Jussieu</span>
-                            <span class="station">Pont Marie</span>
-                            <span class="station highlight">Châtelet 🔄</span>
-                        </div>
-                    </div>
-                </div>
-
-                <table class="price-table" style="margin-top: 15px;">
-                    <tr>
-                        <td>Bilhete avulso</td>
-                        <td class="price">€5,00 - €8,00</td>
-                    </tr>
-                    <tr class="highlight">
-                        <td>Com Navigo Semaine</td>
-                        <td class="price">✅ INCLUSO!</td>
-                    </tr>
-                    <tr>
-                        <td>Zona</td>
-                        <td>Zona 5</td>
-                    </tr>
-                </table>
             </div>
-        </div>
+        </section>
 
         <!-- Zone Map -->
-        <div class="card">
+        <section class="card">
             <div class="card-header">
-                <div class="card-icon" style="background: #e8f4fd;">🗺️</div>
+                <div class="card-icon">📍</div>
                 <div class="card-title">Mapa das Zonas</div>
             </div>
 
-            <div style="background: var(--light); border-radius: 12px; padding: 20px; text-align: center;">
-                <pre style="font-family: monospace; font-size: 11px; line-height: 1.3; text-align: left; display: inline-block;">
-┌─────────────────────────────────────────────────┐
-│                                                 │
-│   ✈️ CDG                    🏰 DISNEYLAND       │
-│   (Zona 5)                    (Zona 5)          │
-│        ╲                        ╱               │
-│         ╲    ┌──────────┐      ╱                │
-│          ╲   │ ZONA 1   │     ╱                 │
-│           ╲  │ 🗼 Torre │    ╱                  │
-│            ╲ │ 🏛️ Louvre│   ╱                   │
-│             ╲│ Centro   │  ╱                    │
-│              └──────────┘ ╱                     │
-│                  │       ╱                      │
-│            ┌──────────┐ ╱                       │
-│            │ ZONA 3   │╱                        │
-│            │🏨 HOTEL  │                         │
-│            │Villejuif │                         │
-│            └──────────┘                         │
-│                  │                              │
-│            ┌──────────┐                         │
-│            │ ZONA 4   │                         │
-│            │ ✈️ ORLY  │                         │
-│            └──────────┘                         │
-│                                                 │
-│  ════════════════════════════════════════════  │
-│  NAVIGO SEMAINE (€30,75) = ZONAS 1-5 + AERO    │
-│  ════════════════════════════════════════════  │
-└─────────────────────────────────────────────────┘
-                </pre>
-            </div>
-        </div>
+            <div class="zone-map">
+<pre>
+     ✈️ CDG              🏰 DISNEY
+    (Zona 5)             (Zona 5)
+         \                 /
+          \  ┌─────────┐  /
+           \ │ ZONA 1  │ /
+            \│ 🗼Torre │/
+             │ Centro  │
+             └────┬────┘
+            ┌─────┴─────┐
+            │  ZONA 3   │
+            │ 🏨 HOTEL  │
+            │ Villejuif │
+            └─────┬─────┘
+            ┌─────┴─────┐
+            │  ZONA 4   │
+            │  ✈️ ORLY  │
+            └───────────┘
 
-        <!-- Metro Map HD -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon" style="background: #667eea;">🚇</div>
-                <div class="card-title">Mapa do Metrô (Alta Resolução)</div>
+ ═══════════════════════════════
+  NAVIGO SEMAINE = ZONAS 1-5
+  Inclui aeroportos e Disney!
+ ═══════════════════════════════
+</pre>
             </div>
-
-            <div class="info-box">
-                <div class="info-box-title">💡 Dica</div>
-                Clique na imagem para abrir em tela cheia. Use os dedos para dar zoom no celular!
-            </div>
-
-            <!-- Map Container with Zoom -->
-            <div id="map-container" style="position: relative; border-radius: 12px; overflow: hidden; margin: 15px 0; background: #fff; border: 2px solid var(--light);">
-                <img
-                    id="metro-map"
-                    src="https://www.ratp.fr/sites/default/files/plans-lignes/Plans-essentiels/Plan-Metro.1733929904.png"
-                    alt="Mapa do Metrô de Paris - RATP"
-                    style="width: 100%; height: auto; cursor: zoom-in; display: block;"
-                    onclick="openFullscreen(this)"
-                    onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Paris_Metro_map_with_main_stations.svg/1280px-Paris_Metro_map_with_main_stations.svg.png';"
-                >
-            </div>
-
-            <!-- Zoom Controls -->
-            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 15px;">
-                <button onclick="openFullscreen(document.getElementById('metro-map'))" style="padding: 12px 20px; border: none; background: var(--primary); color: white; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-                    🔍 Ver em Tela Cheia
-                </button>
-            </div>
-
-            <!-- Download Links -->
-            <div style="background: var(--light); border-radius: 12px; padding: 15px;">
-                <div style="font-weight: 700; margin-bottom: 10px;">📥 Baixar Mapa Oficial (PDF Alta Resolução)</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                    <a href="https://www.ratp.fr/sites/default/files/plans-lignes/Plans-essentiels/Plan-Metro.1733929904.pdf" target="_blank" rel="noopener" style="padding: 10px 15px; background: var(--secondary); color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em; font-weight: 600;">
-                        🚇 Metrô PDF
-                    </a>
-                    <a href="https://www.ratp.fr/sites/default/files/plans-lignes/Plans-essentiels/Plan-RER-et-transiliens.1718184932.pdf" target="_blank" rel="noopener" style="padding: 10px 15px; background: var(--rera); color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em; font-weight: 600;">
-                        🚆 RER + Transilien PDF
-                    </a>
-                    <a href="https://www.ratp.fr/en/plans" target="_blank" rel="noopener" style="padding: 10px 15px; background: var(--success); color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em; font-weight: 600;">
-                        🗺️ Todos os Mapas RATP
-                    </a>
-                </div>
-            </div>
-
-            <!-- Your Lines Highlight -->
-            <div style="margin-top: 20px;">
-                <div style="font-weight: 700; margin-bottom: 10px;">🎯 Suas Linhas Principais</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 15px; background: var(--line7); border-radius: 8px;">
-                        <span style="font-weight: 700;">Linha 7</span>
-                        <span style="font-size: 0.85em;">Villejuif ↔ Châtelet ↔ Place d'Italie</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 15px; background: var(--line6); border-radius: 8px;">
-                        <span style="font-weight: 700;">Linha 6</span>
-                        <span style="font-size: 0.85em;">Place d'Italie ↔ Bir-Hakeim (Torre)</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 15px; background: var(--rera); color: white; border-radius: 8px;">
-                        <span style="font-weight: 700;">RER A</span>
-                        <span style="font-size: 0.85em;">Châtelet ↔ Disneyland</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 15px; background: var(--tramt7); color: white; border-radius: 8px;">
-                        <span style="font-weight: 700;">Tram T7</span>
-                        <span style="font-size: 0.85em;">Orly ↔ Villejuif</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Fullscreen Modal -->
-        <div id="fullscreen-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; overflow: auto;">
-            <button onclick="closeFullscreen()" style="position: fixed; top: 15px; right: 15px; z-index: 10000; padding: 10px 20px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1em;">
-                ✕ Fechar
-            </button>
-            <div style="position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); z-index: 10000; display: flex; gap: 10px;">
-                <button onclick="zoomMap(0.2)" style="padding: 10px 20px; background: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1.2em;">➕</button>
-                <button onclick="zoomMap(-0.2)" style="padding: 10px 20px; background: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1.2em;">➖</button>
-                <button onclick="resetZoom()" style="padding: 10px 20px; background: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">Reset</button>
-            </div>
-            <div id="map-scroll-container" style="width: 100%; height: 100%; overflow: auto; display: flex; align-items: center; justify-content: center; padding: 60px 20px;">
-                <img id="fullscreen-map" src="" alt="Mapa do Metrô" style="max-width: none; transform-origin: center center; transition: transform 0.2s;">
-            </div>
-        </div>
+        </section>
 
         <!-- Apps -->
-        <div class="card">
+        <section class="card">
             <div class="card-header">
-                <div class="card-icon" style="background: #e8f8f0;">📱</div>
-                <div class="card-title">Apps Úteis</div>
+                <div class="card-icon">📱</div>
+                <div class="card-title">Apps Uteis</div>
             </div>
             <div class="apps-grid">
                 <div class="app-item">
                     <div class="app-icon">🚇</div>
                     <div>
-                        <div class="app-name">Île-de-France Mobilités</div>
+                        <div class="app-name">IDF Mobilites</div>
                         <div class="app-desc">Comprar bilhetes</div>
                     </div>
                 </div>
                 <div class="app-item">
-                    <div class="app-icon">🗺️</div>
-                    <div>
-                        <div class="app-name">Bonjour RATP</div>
-                        <div class="app-desc">Mapa metrô tempo real</div>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon">📍</div>
-                    <div>
-                        <div class="app-name">Google Maps</div>
-                        <div class="app-desc">Rotas e horários</div>
-                    </div>
-                </div>
-                <div class="app-item">
-                    <div class="app-icon">🚌</div>
+                    <div class="app-icon" style="background: var(--green);">🗺️</div>
                     <div>
                         <div class="app-name">Citymapper</div>
-                        <div class="app-desc">Melhor p/ transporte</div>
+                        <div class="app-desc">Melhor para rotas</div>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon" style="background: var(--orange);">📍</div>
+                    <div>
+                        <div class="app-name">Google Maps</div>
+                        <div class="app-desc">Mapas offline</div>
+                    </div>
+                </div>
+                <div class="app-item">
+                    <div class="app-icon" style="background: var(--gray-700);">🚌</div>
+                    <div>
+                        <div class="app-name">Bonjour RATP</div>
+                        <div class="app-desc">Tempo real</div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Checklist -->
-        <div class="card">
+        <section class="card">
             <div class="card-header">
-                <div class="card-icon" style="background: #fef5e7;">✅</div>
-                <div class="card-title">Checklist Transporte</div>
+                <div class="card-icon">✅</div>
+                <div class="card-title">Checklist</div>
             </div>
             <ul class="checklist">
                 <li>
@@ -1346,162 +1189,70 @@
                 </li>
                 <li>
                     <div class="check-box" onclick="toggleCheck(this)"></div>
-                    <span>Baixar app Île-de-France Mobilités</span>
+                    <span>Baixar app Ile-de-France Mobilites</span>
                 </li>
                 <li>
                     <div class="check-box" onclick="toggleCheck(this)"></div>
-                    <span>Tentar criar conta no app</span>
+                    <span>Criar conta no app (antes de viajar)</span>
                 </li>
                 <li>
                     <div class="check-box" onclick="toggleCheck(this)"></div>
-                    <span>Se não funcionar: comprar Navigo Easy (€2)</span>
+                    <span>Comprar Navigo Semaine (€30,75)</span>
                 </li>
                 <li>
                     <div class="check-box" onclick="toggleCheck(this)"></div>
-                    <span>Carregar Navigo Semaine (€30,75)</span>
-                </li>
-                <li>
-                    <div class="check-box" onclick="toggleCheck(this)"></div>
-                    <span>Baixar mapas offline do metrô</span>
+                    <span>Baixar mapas offline do metro</span>
                 </li>
                 <li>
                     <div class="check-box" onclick="toggleCheck(this)"></div>
                     <span>Salvar este guia no celular</span>
                 </li>
             </ul>
-        </div>
+        </section>
 
         <!-- Footer -->
-        <div class="footer">
-            <p>📍 Guia criado para viagem Março/2026</p>
-            <p>Preços sujeitos a alteração</p>
-            <p style="margin-top: 10px;">Bon voyage! 🇫🇷</p>
-        </div>
+        <footer class="footer">
+            <p>Guia criado para Marco/2026</p>
+            <p>Precos sujeitos a alteracao</p>
+            <p style="margin-top: 8px;">Bon voyage! 🇫🇷</p>
+        </footer>
     </div>
 
     <script>
-        // Checklist functions
-        function toggleCheck(element) {
-            element.classList.toggle('checked');
-            if (element.classList.contains('checked')) {
-                element.innerHTML = '✓';
-            } else {
-                element.innerHTML = '';
-            }
+        // Checklist
+        function toggleCheck(el) {
+            el.classList.toggle('checked');
+            el.innerHTML = el.classList.contains('checked') ? '✓' : '';
             saveChecklist();
         }
 
-        function toggleAccordion(element) {
-            element.classList.toggle('active');
-            const content = element.nextElementSibling;
-            content.classList.toggle('active');
-        }
-
         function saveChecklist() {
-            const checks = document.querySelectorAll('.check-box');
-            const states = [];
-            checks.forEach(check => {
-                states.push(check.classList.contains('checked'));
-            });
+            const states = [...document.querySelectorAll('.check-box')].map(c => c.classList.contains('checked'));
             localStorage.setItem('paris-checklist', JSON.stringify(states));
         }
 
         function loadChecklist() {
             const saved = localStorage.getItem('paris-checklist');
             if (saved) {
-                const states = JSON.parse(saved);
-                const checks = document.querySelectorAll('.check-box');
-                checks.forEach((check, index) => {
-                    if (states[index]) {
-                        check.classList.add('checked');
-                        check.innerHTML = '✓';
+                JSON.parse(saved).forEach((checked, i) => {
+                    const box = document.querySelectorAll('.check-box')[i];
+                    if (box && checked) {
+                        box.classList.add('checked');
+                        box.innerHTML = '✓';
                     }
                 });
             }
         }
 
-        // Metro Map Fullscreen functions
-        let currentZoom = 1;
-        const maxZoom = 4;
-        const minZoom = 0.5;
-
-        function openFullscreen(imgElement) {
-            const modal = document.getElementById('fullscreen-modal');
-            const fullscreenImg = document.getElementById('fullscreen-map');
-
-            // Use high resolution image for fullscreen
-            fullscreenImg.src = imgElement.src;
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-
-            // Reset zoom
-            currentZoom = 1;
-            fullscreenImg.style.transform = `scale(${currentZoom})`;
-            fullscreenImg.style.width = '100%';
-            fullscreenImg.style.maxWidth = '2000px';
+        // Accordion
+        function toggleAccordion(el) {
+            const content = el.nextElementSibling;
+            const isActive = content.classList.contains('active');
+            content.classList.toggle('active');
+            el.querySelector('span').textContent = isActive ? '▼' : '▲';
         }
 
-        function closeFullscreen() {
-            const modal = document.getElementById('fullscreen-modal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            currentZoom = 1;
-        }
-
-        function zoomMap(delta) {
-            const fullscreenImg = document.getElementById('fullscreen-map');
-            currentZoom = Math.min(maxZoom, Math.max(minZoom, currentZoom + delta));
-            fullscreenImg.style.transform = `scale(${currentZoom})`;
-        }
-
-        function resetZoom() {
-            const fullscreenImg = document.getElementById('fullscreen-map');
-            currentZoom = 1;
-            fullscreenImg.style.transform = `scale(${currentZoom})`;
-        }
-
-        // Close modal on ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeFullscreen();
-            }
-        });
-
-        // Close modal on background click
-        document.getElementById('fullscreen-modal')?.addEventListener('click', function(e) {
-            if (e.target === this || e.target.id === 'map-scroll-container') {
-                closeFullscreen();
-            }
-        });
-
-        // Pinch to zoom on mobile
-        let initialDistance = 0;
-        let initialZoom = 1;
-
-        document.getElementById('map-scroll-container')?.addEventListener('touchstart', function(e) {
-            if (e.touches.length === 2) {
-                initialDistance = Math.hypot(
-                    e.touches[0].pageX - e.touches[1].pageX,
-                    e.touches[0].pageY - e.touches[1].pageY
-                );
-                initialZoom = currentZoom;
-            }
-        });
-
-        document.getElementById('map-scroll-container')?.addEventListener('touchmove', function(e) {
-            if (e.touches.length === 2) {
-                e.preventDefault();
-                const currentDistance = Math.hypot(
-                    e.touches[0].pageX - e.touches[1].pageX,
-                    e.touches[0].pageY - e.touches[1].pageY
-                );
-                const scale = currentDistance / initialDistance;
-                currentZoom = Math.min(maxZoom, Math.max(minZoom, initialZoom * scale));
-                document.getElementById('fullscreen-map').style.transform = `scale(${currentZoom})`;
-            }
-        });
-
-        // Load checklist on page load
+        // Init
         document.addEventListener('DOMContentLoaded', loadChecklist);
     </script>
 </body>
